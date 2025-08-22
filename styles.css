@@ -1,4 +1,67 @@
 :root {
-    /* (Truncated here for brevity) */
-    /* Place your full CSS content here from your previous message */
+  --vale-primary: #f7f3f0;
+  --vale-accent: #d4b896;
+  --vale-text: #2c3e50;
+  --vale-border: #e9ecef;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fafafa;
+  color: var(--vale-text);
+  margin: 0;
+  padding: 0;
+}
+
+.hero-header {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #f7f3f0 0%, #d4b896 100%);
+}
+
+.hero-logo {
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: #64748b;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-header {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid var(--vale-border);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.inspector-name input {
+  padding: 8px 12px;
+  border: 1px solid var(--vale-border);
+  border-radius: 6px;
+  width: 100%;
+}
+
+.app-footer {
+  background: var(--vale-primary);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.confidential {
+  font-weight: bold;
 }
