@@ -1,68 +1,872 @@
-<!-- Rebuilt PDF export version -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building 1 – Owner Weekly Inspection</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 2rem;
-      color: #333;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    h1 {
-      font-size: 1.75rem;
-      margin: 0;
-    }
-    .section {
-      margin-bottom: 1.5rem;
-    }
-    .section h2 {
-      font-size: 1.25rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.25rem;
-    }
-    .entry {
-      margin-left: 1rem;
-      padding: 0.5rem;
-      border-left: 4px solid #ddd;
-      margin-bottom: 0.5rem;
-    }
-    .entry img {
-      max-width: 100%;
-      height: auto;
-      margin-top: 0.5rem;
-      border: 1px solid #aaa;
-    }
-    footer {
-      margin-top: 3rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #888;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building 1 – Owner Weekly Inspection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>Building 1 – Owner Weekly Inspection</h1>
-    <p>Inspector: JT</p>
-    <p>Date: <span id="inspection-date"></span></p>
-  </header>
+    <header class="hero-header">
+        <img src="logo-vale.png" alt="VALE Lake Wylie" class="hero-logo">
+        <h1 class="hero-title">Building 1 – Owner Weekly Inspection</h1>
+        <p class="hero-subtitle">Comprehensive property inspection form</p>
+    </header>
 
-  <main id="report-body">
-    <!-- dynamically filled from script.js -->
-  </main>
+    <main class="container">
+        <form id="inspectionForm">
+            <div class="form-header">
+                <div class="timestamp">
+                    <label>Report Generated:</label>
+                    <span id="currentDateTime"></span>
+                </div>
+                <div class="inspector-name">
+                    <label for="inspectorName">Inspector Name (Optional):</label>
+                    <input type="text" id="inspectorName" placeholder="Enter inspector name...">
+                </div>
+            </div>
 
-  <footer>
-    Report generated automatically from VALE Inspection Web App
-  </footer>
+            <div class="sections-grid">
+                <div class="section" data-section="lobby">
+                    <h3>Lobby & Hallways</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="lobby-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="lobby-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for lobby and hallways..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
 
-  <script src="script.js"></script>
+                <div class="section" data-section="storefront">
+                    <h3>Storefront Exteriors & Windows</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="storefront-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="storefront-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for storefront exteriors and windows..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="elevator">
+                    <h3>Elevator</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="elevator-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="elevator-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for elevator..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="pool">
+                    <h3>Pool</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="pool-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="pool-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for pool area..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="pool-house">
+                    <h3>Pool House</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="pool-house-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="pool-house-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for pool house..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="pool-house-restrooms">
+                    <h3>Pool House – 2 Restrooms</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="pool-house-restrooms-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="pool-house-restrooms-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for pool house restrooms..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="pool-house-wet-sauna">
+                    <h3>Pool House – Wet Sauna</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="pool-house-wet-sauna-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="pool-house-wet-sauna-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for wet sauna..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="pool-house-dry-sauna">
+                    <h3>Pool House – Dry Sauna</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="pool-house-dry-sauna-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="pool-house-dry-sauna-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for dry sauna..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="business-lounge">
+                    <h3>Business Lounge (2 iMacs)</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="business-lounge-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="business-lounge-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for business lounge..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="coffee-bar">
+                    <h3>Coffee Bar Station</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="coffee-bar-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="coffee-bar-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for coffee bar station..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="game-room">
+                    <h3>Game Room</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="game-room-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="game-room-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for game room..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="multi-purpose">
+                    <h3>Multi-Purpose / Yoga Room</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="multi-purpose-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="multi-purpose-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for multi-purpose/yoga room..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="restrooms">
+                    <h3>Restrooms (1st & 2nd Floor)</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="restrooms-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="restrooms-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for restrooms..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="clubhouse">
+                    <h3>Clubhouse Lounge</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="clubhouse-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="clubhouse-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for clubhouse lounge..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="fitness">
+                    <h3>Fitness/Yoga Room</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="fitness-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="fitness-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for fitness/yoga room..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="leasing">
+                    <h3>Leasing Office</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="leasing-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="leasing-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for leasing office..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="mail">
+                    <h3>Mail/Package Room</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="mail-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="mail-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for mail/package room..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="parking">
+                    <h3>Parking Lot & Breezeways</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="parking-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="parking-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for parking lot and breezeways..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="grounds-dog-park">
+                    <h3>Grounds & Dog Park</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="grounds-dog-park-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="grounds-dog-park-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for grounds and dog park..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="mulch-landscaping">
+                    <h3>Mulch / Landscaping Beds</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="mulch-landscaping-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="mulch-landscaping-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for mulch and landscaping beds..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="sidewalks-perimeter">
+                    <h3>Sidewalks & Perimeter</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="sidewalks-perimeter-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="sidewalks-perimeter-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for sidewalks and perimeter..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="landscaping">
+                    <h3>Landscaping</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="landscaping-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="landscaping-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for landscaping..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="trash">
+                    <h3>Trash Area & Dumpster</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="trash-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="trash-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for trash area and dumpster..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="roof">
+                    <h3>Roof & Gutters</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="roof-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="roof-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for roof and gutters..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="lighting">
+                    <h3>Lighting & Signage</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="lighting-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="lighting-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for lighting and signage..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="emergency">
+                    <h3>Emergency/Safety Systems</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="emergency-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="emergency-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for emergency and safety systems..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section" data-section="exterior">
+                    <h3>Exterior Walls/Siding</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="exterior-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="exterior-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter notes for exterior walls and siding..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="section full-width" data-section="final-comments">
+                    <h3>Final Comments & Attachments</h3>
+                    <div class="status-checkboxes">
+                        <label class="status-label">
+                            <input type="radio" name="final-comments-status" value="acceptable">
+                            <span class="checkmark acceptable">Acceptable</span>
+                        </label>
+                        <label class="status-label">
+                            <input type="radio" name="final-comments-status" value="not-acceptable">
+                            <span class="checkmark not-acceptable">Not Acceptable</span>
+                        </label>
+                    </div>
+                    <textarea placeholder="Enter any final comments and attach additional documentation..."></textarea>
+                    <div class="photo-upload">
+                        <div class="drop-zone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                            <input type="file" multiple accept="image/*">
+                        </div>
+                        <div class="photo-preview"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="miscellaneous-group">
+                <h2>Miscellaneous / Not Covered</h2>
+                <p class="group-description">For flexible reporting of items outside predefined categories</p>
+                
+                <div class="sections-grid">
+                    <div class="section" data-section="unclassified-a">
+                        <h3>Unclassified Observations A</h3>
+                        <div class="status-checkboxes">
+                            <label class="status-label">
+                                <input type="radio" name="unclassified-a-status" value="acceptable">
+                                <span class="checkmark acceptable">Acceptable</span>
+                            </label>
+                            <label class="status-label">
+                                <input type="radio" name="unclassified-a-status" value="not-acceptable">
+                                <span class="checkmark not-acceptable">Not Acceptable</span>
+                            </label>
+                        </div>
+                        <textarea placeholder="Enter any unclassified observations..."></textarea>
+                        <div class="photo-upload">
+                            <div class="drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                                <input type="file" multiple accept="image/*">
+                            </div>
+                            <div class="photo-preview"></div>
+                        </div>
+                    </div>
+
+                    <div class="section" data-section="unclassified-b">
+                        <h3>Unclassified Observations B</h3>
+                        <div class="status-checkboxes">
+                            <label class="status-label">
+                                <input type="radio" name="unclassified-b-status" value="acceptable">
+                                <span class="checkmark acceptable">Acceptable</span>
+                            </label>
+                            <label class="status-label">
+                                <input type="radio" name="unclassified-b-status" value="not-acceptable">
+                                <span class="checkmark not-acceptable">Not Acceptable</span>
+                            </label>
+                        </div>
+                        <textarea placeholder="Enter additional unclassified observations..."></textarea>
+                        <div class="photo-upload">
+                            <div class="drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                                <input type="file" multiple accept="image/*">
+                            </div>
+                            <div class="photo-preview"></div>
+                        </div>
+                    </div>
+
+                    <div class="section" data-section="misc-interior">
+                        <h3>Miscellaneous Interior</h3>
+                        <div class="status-checkboxes">
+                            <label class="status-label">
+                                <input type="radio" name="misc-interior-status" value="acceptable">
+                                <span class="checkmark acceptable">Acceptable</span>
+                            </label>
+                            <label class="status-label">
+                                <input type="radio" name="misc-interior-status" value="not-acceptable">
+                                <span class="checkmark not-acceptable">Not Acceptable</span>
+                            </label>
+                        </div>
+                        <textarea placeholder="Enter notes for miscellaneous interior items..."></textarea>
+                        <div class="photo-upload">
+                            <div class="drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                                <input type="file" multiple accept="image/*">
+                            </div>
+                            <div class="photo-preview"></div>
+                        </div>
+                    </div>
+
+                    <div class="section" data-section="misc-exterior">
+                        <h3>Miscellaneous Exterior</h3>
+                        <div class="status-checkboxes">
+                            <label class="status-label">
+                                <input type="radio" name="misc-exterior-status" value="acceptable">
+                                <span class="checkmark acceptable">Acceptable</span>
+                            </label>
+                            <label class="status-label">
+                                <input type="radio" name="misc-exterior-status" value="not-acceptable">
+                                <span class="checkmark not-acceptable">Not Acceptable</span>
+                            </label>
+                        </div>
+                        <textarea placeholder="Enter notes for miscellaneous exterior items..."></textarea>
+                        <div class="photo-upload">
+                            <div class="drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                                <input type="file" multiple accept="image/*">
+                            </div>
+                            <div class="photo-preview"></div>
+                        </div>
+                    </div>
+
+                    <div class="section" data-section="vendor-activity">
+                        <h3>Vendor Activity Notes</h3>
+                        <div class="status-checkboxes">
+                            <label class="status-label">
+                                <input type="radio" name="vendor-activity-status" value="acceptable">
+                                <span class="checkmark acceptable">Acceptable</span>
+                            </label>
+                            <label class="status-label">
+                                <input type="radio" name="vendor-activity-status" value="not-acceptable">
+                                <span class="checkmark not-acceptable">Not Acceptable</span>
+                            </label>
+                        </div>
+                        <textarea placeholder="Enter notes about vendor activities observed..."></textarea>
+                        <div class="photo-upload">
+                            <div class="drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                                <input type="file" multiple accept="image/*">
+                            </div>
+                            <div class="photo-preview"></div>
+                        </div>
+                    </div>
+
+                    <div class="section" data-section="unexpected-issues">
+                        <h3>Unexpected Issues</h3>
+                        <div class="status-checkboxes">
+                            <label class="status-label">
+                                <input type="radio" name="unexpected-issues-status" value="acceptable">
+                                <span class="checkmark acceptable">Acceptable</span>
+                            </label>
+                            <label class="status-label">
+                                <input type="radio" name="unexpected-issues-status" value="not-acceptable">
+                                <span class="checkmark not-acceptable">Not Acceptable</span>
+                            </label>
+                        </div>
+                        <textarea placeholder="Enter notes for any unexpected issues encountered..."></textarea>
+                        <div class="photo-upload">
+                            <div class="drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                                <input type="file" multiple accept="image/*">
+                            </div>
+                            <div class="photo-preview"></div>
+                        </div>
+                    </div>
+
+                    <div class="section full-width" data-section="other-comments">
+                        <h3>Other Photos & Comments</h3>
+                        <div class="status-checkboxes">
+                            <label class="status-label">
+                                <input type="radio" name="other-comments-status" value="acceptable">
+                                <span class="checkmark acceptable">Acceptable</span>
+                            </label>
+                            <label class="status-label">
+                                <input type="radio" name="other-comments-status" value="not-acceptable">
+                                <span class="checkmark not-acceptable">Not Acceptable</span>
+                            </label>
+                        </div>
+                        <textarea placeholder="Enter any additional comments or observations..."></textarea>
+                        <div class="photo-upload">
+                            <div class="drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop photos here or <span class="browse">browse</span></p>
+                                <input type="file" multiple accept="image/*">
+                            </div>
+                            <div class="photo-preview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="signature-section">
+                <h3>Inspector Signature</h3>
+                <canvas id="signatureCanvas" width="400" height="200"></canvas>
+                <button type="button" id="clearSignature" class="btn-secondary">Clear Signature</button>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-file-pdf"></i>
+                    Submit & Download PDF
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 VALE Lake Wylie. All rights reserved.</p>
+            <p class="confidential">Confidential Owner Report — Do not distribute</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
