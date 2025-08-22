@@ -1,3 +1,40 @@
 <!DOCTYPE html>
-<!-- (Truncated here for brevity) -->
-<!-- Place your full HTML code here from your previous message -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Building 1 – Owner Weekly Inspection</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <header class="hero-header">
+        <img src="vale-logo.png" alt="VALE Lake Wylie" class="hero-logo">
+        <h1 class="hero-title">Building 1 – Owner Weekly Inspection</h1>
+        <p class="hero-subtitle">Comprehensive property inspection form</p>
+    </header>
+    <main class="container">
+        <form id="inspectionForm">
+            <div class="form-header">
+                <div class="timestamp">
+                    <label>Report Generated:</label>
+                    <span id="currentDateTime"></span>
+                </div>
+                <div class="inspector-name">
+                    <label for="inspectorName">Inspector Name (Optional):</label>
+                    <input type="text" id="inspectorName" placeholder="Enter inspector name..." />
+                </div>
+            </div>
+            <p style="margin-top:2em;">This is a working placeholder. Replace this with full form sections.</p>
+        </form>
+    </main>
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 VALE Lake Wylie. All rights reserved.</p>
+            <p class="confidential">Confidential Owner Report — Do not distribute</p>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>
